@@ -21,8 +21,8 @@ const Sidebar = ({ toggle }) => {
                                 <span className="align-middle">Dashboard</span>
                             </a>
                         </li>
-                        <li className={location.pathname === "/orderList" ? "sidebar-item active" : "sidebar-item"}>
-                            <a className="sidebar-link" href="/orderList">
+                        <li className={location.pathname === "/orderlist" ? "sidebar-item active" : "sidebar-item"}>
+                            <a className="sidebar-link" href="/orderlist">
                                 <MdOutlineSettingsInputComposite />
                                 <span className="align-middle">Orders</span>
                             </a>

@@ -15,7 +15,7 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}></Route>
-      <Route path="/orderList" element={<App />}></Route>
+      <Route path="/orderlist" element={<App />}></Route>
     </Routes>
   </BrowserRouter>
 );

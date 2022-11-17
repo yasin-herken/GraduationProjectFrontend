@@ -30,7 +30,7 @@ function App() {
             <main className='content'>
               <div className='container-fluid p-0'>
                 {
-                  location.pathname === "/orderList" ?
+                  location.pathname === "/orderlist" ?
                     <OrderList />
                     :
                     null
