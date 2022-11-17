@@ -27,8 +27,8 @@ const Sidebar = ({ toggle }) => {
                                 <span className="align-middle">Orders</span>
                             </a>
                         </li>
-                        <li className={location.pathname === "/" ? "sidebar-item active" : "sidebar-item"}>
-                            <a className="sidebar-link" href="pages-sign-in.html">
+                        <li className={location.pathname === "/123" ? "sidebar-item active" : "sidebar-item"}>
+                            <a className="sidebar-link" href="/123">
                                 <i className="align-middle" data-feather="log-in" /> <span className="align-middle">Sign In</span>
                             </a>
                         </li>
