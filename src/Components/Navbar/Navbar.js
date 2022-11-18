@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../css/app.css';
+import "../../assets/css/app.css";
 const Navbar = ({setToggle}) => {
     return (
         <nav className="navbar navbar-expand navbar-light navbar-bg">
