@@ -1,7 +1,8 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import 'primeicons/primeicons.css';
-import { MdOutlineSettingsInputComposite } from "react-icons/md"
+import { MdOutlineSettingsInputComposite } from "react-icons/md";
+import { TiShoppingCart } from "react-icons/ti";
 const Sidebar = ({ toggle }) => {
     const location = useLocation();
     return (
@@ -23,7 +24,7 @@ const Sidebar = ({ toggle }) => {
                         </li>
                         <li className={location.pathname === "/orderlist" ? "sidebar-item active" : "sidebar-item"}>
                             <a className="sidebar-link" href="/orderlist">
-                                <MdOutlineSettingsInputComposite />
+                                <TiShoppingCart />
                                 <span className="align-middle">Orders</span>
                             </a>
                         </li>

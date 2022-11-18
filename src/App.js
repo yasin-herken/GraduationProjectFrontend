@@ -29,12 +29,8 @@ function App() {
             <Navbar setToggle={setToggle} />
             <main className='content'>
               <div className='container-fluid p-0'>
-                {
-                  location.pathname === "/orderlist" ?
-                    <OrderList />
-                    :
-                    null
-                }
+                {location.pathname === "/orderlist" ?<OrderList />:null}
+                
               </div>
             </main>
           </div>
