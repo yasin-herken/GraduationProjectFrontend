@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
-import Navbar from './Components/Navbar/Navbar';
-import Sidebar from './Components/Sidebar';
-import OrderList from './Pages/Orders/OrderList';
+import { selectUser } from './Features/user/userSlice';
+import { hasRole } from './Utils/auth';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import Login from './Pages/Login/Login';
+import Register from './Pages/Register/Register';
 function App() {
   const [loaded, setLoaded] = useState(false);
-  const [toggle, setToggle] = useState(false);
-  const location = useLocation();
+  const user = useSelector(selectUser);
   useEffect(() => {
     const handleContentLoaded = () => {
       const scriptTag = document.createElement('script');
@@ -22,20 +24,31 @@ function App() {
   }, [loaded]);
   return (
     <React.Fragment>
-      {loaded ?
-        <div className="wrapper">
-          <Sidebar toggle={toggle} />
-          <div className='main'>
-            <Navbar setToggle={setToggle} />
-            <main className='content'>
-              <div className='container-fluid p-0'>
-                {location.pathname === "/orderlist" ?<OrderList />:null}
-                
-              </div>
-            </main>
-          </div>
-        </div>
-        : null
+      {
+        loaded ?
+          <Routes>
+            {
+              hasRole(user, ["ROLE_ADMIN", "ROLE_USER", "ROLE_MODERATOR"])
+                ?
+                <>
+                  <Route exact path="/" element={<Dashboard />} />
+                  <Route path="/orderlist" element={<Dashboard />} />
+                  <Route path="/login" element={<Dashboard />} />
+                  <Route path="/register" element={<Dashboard />} />
+                </>
+                :
+                <>
+                  <Route path="/"  element={<Navigate to="/login" />}>
+                  </Route>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                </>
+            }
+
+
+
+          </Routes>
+          : null
       }
     </React.Fragment>
   );

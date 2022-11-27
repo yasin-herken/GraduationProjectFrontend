@@ -1,11 +1,16 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import "../../assets/css/app.css";
+import { logout } from '../../Features/user/userSlice';
 const Navbar = ({setToggle}) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
         <nav className="navbar navbar-expand navbar-light navbar-bg">
             <a className={"sidebar-toggle js-sidebar-toggle"} onClick={() => {
                 setToggle(prev=>!prev);
-            }}>
+            }} href="#1">
                 <i className="hamburger align-self-center" />
             </a>
             <div className="navbar-collapse collapse">
@@ -156,7 +161,9 @@ const Navbar = ({setToggle}) => {
                             <a className="dropdown-item" href="index.html"><i className="align-middle me-1" data-feather="settings" /> Settings &amp; Privacy</a>
                             <a className="dropdown-item" href="#"><i className="align-middle me-1" data-feather="help-circle" /> Help Center</a>
                             <div className="dropdown-divider" />
-                            <a className="dropdown-item" href="#">Log out</a>
+                            <Link className="dropdown-item" to="/" onClick={()=>{
+                                dispatch(logout());
+                            }}>Log out</Link>
                         </div>
                     </li>
                 </ul>

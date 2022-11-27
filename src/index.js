@@ -6,18 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import "./assets/css/app.css";
 import {
   BrowserRouter,
-  Routes,
-  Route
 } from "react-router-dom";
 import 'primeicons/primeicons.css';
+import { PersistGate } from 'redux-persist/integration/react';
+import store,{Persistor} from './Store/store';
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />}></Route>
-      <Route path="/orderlist" element={<App />}></Route>
-    </Routes>
-  </BrowserRouter>
+  <Provider store={store}>
+     <PersistGate loading={null} persistor={Persistor}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter> 
+      </PersistGate>
+    </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

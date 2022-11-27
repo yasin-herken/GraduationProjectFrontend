@@ -42,8 +42,7 @@ const OrderList = () => {
     const [deleteProductsDialog, setDeleteProductsDialog] = useState(false);
     const toast = useRef(null);
     const [filters, setFilters] = useState({
-        'userId': { value: null, matchMode: FilterMatchMode.CONTAINS },
-        'id': { value: null, matchMode: FilterMatchMode.CONTAINS },
+        'name': { value: null, matchMode: FilterMatchMode.CONTAINS },
         // 'title': { operator: FilterOperator.CONTAINS},
         // 'body': {operator: FilterOperator.CONTAINS },
 
@@ -52,8 +51,7 @@ const OrderList = () => {
     const onGlobalFilterChange = (e) => {
         const value = e.target.value;
         let _filters = { ...filters };
-        _filters['userId'].value = value;
-        _filters['id'].value = value;
+        _filters['name'].value = value;
         setFilters(_filters);
         setGlobalFilterValue(value);
     }
@@ -268,7 +266,7 @@ const OrderList = () => {
                         rowHover
                         loading={loading}
                         globalFilterFields={
-                            ['userId', 'id', 'title', 'body']
+                            ['name']
                         }
                         responsiveLayout="scroll"
                         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
