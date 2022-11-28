@@ -27,5 +27,3 @@ jobs:
     - run: rm -rf node_modules/
     - run: npm ci --production
     - run: npm run build
-      env: 
-        CI: false
