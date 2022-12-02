@@ -274,7 +274,7 @@ const OrderList = () => {
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} exportable={false}></Column>
                         <Column field="code" header="Code" sortable style={{ minWidth: '12rem' }}></Column>
                         <Column field="name" header="Name" sortable style={{ minWidth: '16rem' }}></Column>
-                        <Column field="image" header="Image" body={imageBodyTemplate}></Column>
+                        {/* <Column field="image" header="Image" body={imageBodyTemplate}></Column> */}
                         <Column field="price" header="Price" body={priceBodyTemplate} sortable style={{ minWidth: '8rem' }}></Column>
                         <Column field="category" header="Category" sortable style={{ minWidth: '10rem' }}></Column>
                         <Column field="rating" header="Reviews" body={ratingBodyTemplate} sortable style={{ minWidth: '12rem' }}></Column>

@@ -34,7 +34,9 @@ function App() {
                   <Route exact path="/" element={<Dashboard />} />
                   <Route path="/orderlist" element={<Dashboard />} />
                   <Route path="/login" element={<Dashboard />} />
+                  <Route path="/products" element={<Dashboard />} />
                   <Route path="/register" element={<Dashboard />} />
+                  <Route path="/users" element={<Dashboard />} />
                 </>
                 :
                 <>
@@ -42,6 +44,7 @@ function App() {
                   </Route>
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="*" element={<Login />} />
                 </>
             }
           </Routes>

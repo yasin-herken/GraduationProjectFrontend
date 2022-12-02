@@ -1,8 +1,9 @@
 import React from 'react'
 import { useLocation } from 'react-router-dom'
 import 'primeicons/primeicons.css';
-import { MdOutlineSettingsInputComposite } from "react-icons/md";
+import { MdOutlineSettingsInputComposite, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { TiShoppingCart } from "react-icons/ti";
+import { BsPersonCircle } from "react-icons/bs";
 const Sidebar = ({ toggle }) => {
     const location = useLocation();
     return (
@@ -28,19 +29,16 @@ const Sidebar = ({ toggle }) => {
                                 <span className="align-middle">Orders</span>
                             </a>
                         </li>
-                        <li className={location.pathname === "/123" ? "sidebar-item active" : "sidebar-item"}>
-                            <a className="sidebar-link" href="/123">
-                                <i className="align-middle" data-feather="log-in" /> <span className="align-middle">Sign In</span>
+                        <li className={location.pathname === "/products" ? "sidebar-item active" : "sidebar-item"}>
+                            <a className="sidebar-link" href="/products">
+                                <MdOutlineProductionQuantityLimits />
+                                <span className="align-middle">Products</span>
                             </a>
                         </li>
-                        <li className="sidebar-item">
-                            <a className="sidebar-link" href="pages-sign-up.html">
-                                <i className="align-middle" data-feather="user-plus" /> <span className="align-middle">Sign Up</span>
-                            </a>
-                        </li>
-                        <li className="sidebar-item">
-                            <a className="sidebar-link" href="pages-blank.html">
-                                <i className="align-middle" data-feather="book" /> <span className="align-middle">Blank</span>
+                        <li className={location.pathname === "/users" ? "sidebar-item active" : "sidebar-item"}>
+                            <a className="sidebar-link" href="/users">
+                                <BsPersonCircle />
+                                <span className="align-middle">Users</span>
                             </a>
                         </li>
                         <li className="sidebar-header">
