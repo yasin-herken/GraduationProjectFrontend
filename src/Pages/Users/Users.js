@@ -225,7 +225,7 @@ const Users = () => {
         try {
           const fetchData = await getUsers(lazyParams);
           setTotalRecords(fetchData.totalRecords);
-          setData(fetchData.users);
+          setData(fetchData.data);
         } catch (err) {
           console.log(err);
         }
