@@ -41,12 +41,12 @@ const Sidebar = ({ toggle }) => {
             </li>
             <li
               className={
-                location.pathname === "/orderlist"
+                location.pathname === "/orders"
                   ? "sidebar-item active"
                   : "sidebar-item"
               }
             >
-              <a className="sidebar-link" href="/orderlist">
+              <a className="sidebar-link" href="/orders">
                 <TiShoppingCart />
                 <span className="align-middle">Orders</span>
               </a>
@@ -77,50 +77,6 @@ const Sidebar = ({ toggle }) => {
                 </a>
               </li>
             )}
-            <li className="sidebar-header">Tools &amp; Components</li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="ui-buttons.html">
-                <i className="align-middle" data-feather="square" />{" "}
-                <span className="align-middle">Buttons</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="ui-forms.html">
-                <i className="align-middle" data-feather="check-square" />{" "}
-                <span className="align-middle">Forms</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="ui-cards.html">
-                <i className="align-middle" data-feather="grid" />{" "}
-                <span className="align-middle">Cards</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="ui-typography.html">
-                <i className="align-middle" data-feather="align-left" />{" "}
-                <span className="align-middle">Typography</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="icons-feather.html">
-                <i className="align-middle" data-feather="coffee" />{" "}
-                <span className="align-middle">Icons</span>
-              </a>
-            </li>
-            <li className="sidebar-header">Plugins &amp; Addons</li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="charts-chartjs.html">
-                <i className="align-middle" data-feather="bar-chart-2" />{" "}
-                <span className="align-middle">Charts</span>
-              </a>
-            </li>
-            <li className="sidebar-item">
-              <a className="sidebar-link" href="maps-google.html">
-                <i className="align-middle" data-feather="map" />{" "}
-                <span className="align-middle">Maps</span>
-              </a>
-            </li>
           </ul>
         </div>
       </nav>

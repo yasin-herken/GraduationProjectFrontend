@@ -1,0 +1,16 @@
+export const Color = Object.freeze({
+  RED: "RED",
+  BLUE: "BLUE",
+  GREEN: "GREEN",
+  YELLOW: "YELLOW",
+  BLACK: "BLACK",
+  WHITE: "WHITE",
+  PINK: "PINK",
+  PURPLE: "PURPLE",
+  ORANGE: "ORANGE",
+  BROWN: "BROWN",
+  GRAY: "GRAY",
+  GOLD: "GOLD",
+  SILVER: "SILVER",
+  OTHER: "OTHER",
+});

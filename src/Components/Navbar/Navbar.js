@@ -16,16 +16,7 @@ const Navbar = ({setToggle}) => {
             <div className="navbar-collapse collapse">
                 <ul className="navbar-nav navbar-align">
                     <li className="nav-item dropdown">
-                        <a className="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
-                            <div className="position-relative">
-                                <i className="align-middle" data-feather="bell" />
-                                <span className="indicator">4</span>
-                            </div>
-                        </a>
                         <div className="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-                            <div className="dropdown-menu-header">
-                                4 New Notifications
-                            </div>
                             <div className="list-group">
                                 <a href="#" className="list-group-item">
                                     <div className="row g-0 align-items-center">

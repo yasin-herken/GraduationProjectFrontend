@@ -16,7 +16,7 @@ var emptyUser = {
   company: "",
   address: "",
   city: "",
-  phone: "1-570-236-7033",
+  phone: "",
   __v: 0,
 };
 
@@ -35,7 +35,7 @@ const Users = () => {
   const [lazyParams, setLazyParams] = useState({
     pageNo: 0,
     pageSize: 5,
-    page: 1,
+    page: 0,
     sortBy: "createdAt",
     direction: "ASC",
   });
