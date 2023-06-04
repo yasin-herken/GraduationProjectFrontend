@@ -30,6 +30,17 @@ export const getProduct = async (id) => {
   return null;
 };
 
+export const getProductForOrder = async (id) => {
+  const response = await userRequest(`Bearer ${getToken()}`).get(
+    `/api/order/products/${id}`
+  );
+
+  if (response.status === 200) {
+    return response.data;
+  }
+  return null;
+}
+
 export const postProduct = async (data) => {
   const response = await userRequest(`Bearer ${getToken()}`).post(
     `/api/seller`,

@@ -192,13 +192,14 @@ const ProductCreate = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="row">
           <div className="col-md-4 col-sm-6">
-            <FieldText name="title" register={register} errors={errors}/>
+            <FieldText name="title" register={register} errors={errors} control={control}/>
           </div>
           <div className="col-md-4 col-sm-6">
             <FieldText
               name="description"
               register={register}
               errors={errors}
+              control={control}
             />
           </div>
           <div className="col-md-4 col-sm-6">
@@ -222,7 +223,6 @@ const ProductCreate = () => {
               locale="en-US"
             />
           </div>
-
           <div className="col-md-4 col-sm-6">
             <FieldDropdown
               name="category"

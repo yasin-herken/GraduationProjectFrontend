@@ -29,7 +29,6 @@ const Orders = () => {
     />);
   };
 
-
   const formatCurrency = (value) => {
     return <span>{value.currency + value.price}</span>;
   };
@@ -78,7 +77,6 @@ const Orders = () => {
           size="small"
           onPage={onPage}
           scrollHeight="100%"
-          // filterDisplay="menu"
           paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           currentPageReportTemplate={`Showing {first} to {last} of {totalRecords} entries`}
           rowsPerPageOptions={[5, 10, 20]}

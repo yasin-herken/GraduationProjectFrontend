@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import { DataTable } from "primereact/datatable";
-import { Button } from "primereact/button";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { InputText } from "primereact/inputtext";
-import { Column } from "primereact/column";
-import { Toast } from "primereact/toast";
+import React, {useEffect, useRef, useState} from "react";
+import {DataTable} from "primereact/datatable";
+import {Button} from "primereact/button";
+import {ProgressSpinner} from "primereact/progressspinner";
+import {InputText} from "primereact/inputtext";
+import {Column} from "primereact/column";
+import {Toast} from "primereact/toast";
 import "./Users.css";
-import { getUsers } from "../../Services/userServices";
-import { Toolbar } from "primereact/toolbar";
-import { Dialog } from "primereact/dialog";
+import {deleteUserById, getUsers} from "../../Services/userServices";
+import {Dialog} from "primereact/dialog";
+
 var emptyUser = {
   id: "",
   username: "",
@@ -43,43 +43,14 @@ const Users = () => {
   const hideDeleteUserDialog = () => {
     setDeleteUserDialog(false);
   };
-  const hideDeleteUsersDialog = () => {
-    setDeleteUsersDialog(false);
-  };
-  const confirmDeleteSelected = () => {
-    setDeleteUsersDialog(true);
-  };
-  const openNew = () => {
-    setUser(emptyUser);
-    setSubmitted(false);
-    setUserDialog(true);
-  };
+
   const editUser = (user) => {
-    setUser({ ...user });
+    setUser({...user});
     setUserDialog(true);
   };
   const confirmDeleteUser = (user) => {
     setUser(user);
     setDeleteUserDialog(true);
-  };
-  const leftToolbarTemplate = () => {
-    return (
-      <React.Fragment>
-        <Button
-          label="New"
-          icon="pi pi-plus"
-          className="p-button-success mr-2"
-          onClick={openNew}
-        />
-        <Button
-          label="Delete"
-          icon="pi pi-trash"
-          className="p-button-danger"
-          onClick={confirmDeleteSelected}
-          disabled={!selectedUsers || !selectedUsers.length}
-        />
-      </React.Fragment>
-    );
   };
   const roleBodyTemplate = (rowData) => {
     const roles = rowData?.roles ? rowData.roles : [];
@@ -112,31 +83,19 @@ const Users = () => {
       </React.Fragment>
     );
   };
-  const deleteUser = () => {
-    let _user = data.filter((val) => val.id !== user.id);
-    setData(_user);
-    setDeleteUserDialog(false);
+  const deleteUser = async() => {
+    const deleteUser = deleteUserById(user.id)
+    if(deleteUser) {
+      toast.current.show({
+        severity: "success",
+        summary: "Successful",
+        detail: "User Deleted",
+        life: 3000,
+      });
+
+    }
     setUser(emptyUser);
-    toast.current.show({
-      severity: "success",
-      summary: "Successful",
-      detail: "User Deleted",
-      life: 3000,
-    });
-  };
-  const deleteUsers = () => {
-    let _users = data.filter(
-      (val) => !selectedUsers.some((user) => user.id === val.id)
-    );
-    setData(_users);
-    setDeleteUsersDialog(false);
-    setSelectedUsers(null);
-    toast.current.show({
-      severity: "success",
-      summary: "Successful",
-      detail: "User Deleted",
-      life: 3000,
-    });
+
   };
   const deleteUserDialogFooter = (
     <React.Fragment>
@@ -154,28 +113,13 @@ const Users = () => {
       />
     </React.Fragment>
   );
-  const deleteUsersDialogFooter = (
-    <React.Fragment>
-      <Button
-        label="No"
-        icon="pi pi-times"
-        className="p-button-text"
-        onClick={hideDeleteUsersDialog}
-      />
-      <Button
-        label="Yes"
-        icon="pi pi-check"
-        className="p-button-text"
-        onClick={deleteUsers}
-      />
-    </React.Fragment>
-  );
+
   const renderHeader = () => {
     return (
       <div className="flex justify-content-between align-items-center ">
         <h5 className="m-0">User List</h5>
         <span className="p-input-icon-left">
-          <i className="pi pi-search" />
+          <i className="pi pi-search"/>
           <InputText
             value={globalFilterValue}
             onChange={(e) => setGlobalFilterValue(e.target.value)}
@@ -187,7 +131,6 @@ const Users = () => {
   };
   const header = renderHeader();
   const onPage = (event) => {
-    console.log(event);
     setLazyParams({
       ...lazyParams,
       pageNo: event.first,
@@ -200,7 +143,7 @@ const Users = () => {
     setLazyParams({
       ...lazyParams,
       sortBy: event.sortField,
-      direction: event.sortOrder==="-1"? "DESC" : "ASC"
+      direction: event.sortOrder === "-1" ? "DESC" : "ASC"
     });
   };
 
@@ -238,9 +181,8 @@ const Users = () => {
   return !loading ? (
     <React.Fragment>
       <div className="datatable-crud-demo">
-        <Toast ref={toast} />
+        <Toast ref={toast} onRemove={()=>window.location.reload(false)}/>
         <div className="card p-4">
-          <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
           <DataTable
             value={data}
             paginator
@@ -265,11 +207,11 @@ const Users = () => {
             responsiveLayout="scroll"
             currentPageReportTemplate={`Showing {first} to {last} of {totalRecords} entries`}
           >
-            <Column selectionMode="multiple" exportable={false} />
+            <Column selectionMode="multiple" exportable={false}/>
             <Column
               header="User"
               field="username"
-              filterMenuStyle={{ width: "14rem" }}
+              filterMenuStyle={{width: "14rem"}}
               sortable
             />
             <Column
@@ -278,16 +220,16 @@ const Users = () => {
               body={roleBodyTemplate}
               sortable
             />
-            <Column field="email" header="Email" sortable />
-            <Column field="city" header="City" sortable />
-            <Column field="phone" header="Phone" sortable />
-            <Column body={actionBodyTemplate} exportable={false} />
+            <Column field="email" header="Email" sortable/>
+            <Column field="city" header="City" sortable/>
+            <Column field="phone" header="Phone" sortable/>
+            <Column body={actionBodyTemplate} exportable={false}/>
           </DataTable>
         </div>
       </div>
       <Dialog
         visible={deleteUserDialog}
-        style={{ width: "450px" }}
+        style={{width: "450px"}}
         header="Confirm"
         modal
         footer={deleteUserDialogFooter}
@@ -296,7 +238,7 @@ const Users = () => {
         <div className="confirmation-content">
           <i
             className="pi pi-exclamation-triangle mr-3"
-            style={{ fontSize: "2rem" }}
+            style={{fontSize: "2rem"}}
           />
           {user && (
             <span>
@@ -305,26 +247,10 @@ const Users = () => {
           )}
         </div>
       </Dialog>
-      <Dialog
-        visible={deleteUsersDialog}
-        style={{ width: "450px" }}
-        header="Confirm"
-        modal
-        footer={deleteUsersDialogFooter}
-        onHide={hideDeleteUsersDialog}
-      >
-        <div className="confirmation-content">
-          <i
-            className="pi pi-exclamation-triangle mr-3"
-            style={{ fontSize: "2rem" }}
-          />
-          {selectedUsers && <span>Are you sure you want to delete users?</span>}
-        </div>
-      </Dialog>
     </React.Fragment>
   ) : (
     <div className="d-flex justify-content-md-center align-items-center vh-80">
-      <ProgressSpinner />
+      <ProgressSpinner/>
     </div>
   );
 };

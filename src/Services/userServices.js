@@ -1,7 +1,7 @@
-import { userRequest } from "../Requests/RequestMethods";
-import { getToken } from "./tokenServices";
+import {userRequest} from "../Requests/RequestMethods";
+import {getToken} from "./tokenServices";
 
-export const getUsers = async ({ pageSize, sortBy, direction, page }) => {
+export const getUsers = async ({pageSize, sortBy, direction, page}) => {
   const response = await userRequest(`Bearer ${getToken()}`).get(
     `/api/admin/users`,
     {
@@ -19,6 +19,14 @@ export const getUsers = async ({ pageSize, sortBy, direction, page }) => {
   }
   return null;
 };
+
+export const deleteUserById = async (id) => {
+  const response = await userRequest(`Bearer ${getToken()}`).delete(
+    `/api/admin/sellers/${id}`
+  )
+console.log(response);
+  return response.status === 200;
+}
 
 export const deleteProduct = async (id) => {
   const response = await userRequest(`Bearer ${getToken()}`).delete(

@@ -14,6 +14,19 @@ export const getOrdersBy = async ({pageSize, sortBy, direction, page}) => {
   return null;
 };
 
+export const getOrdersForAdmin = async ({pageSize, sortBy, direction, page}) => {
+  const response = await userRequest(`Bearer ${getToken()}`).get(`/api/order`, {
+    params: {
+      pageSize, sortBy, direction, page,
+    },
+  });
+
+  if (response.status === 200) {
+    return response.data;
+  }
+  return null;
+}
+
 export const updateOrderStatus = async (id, status) => {
   console.log(id, status)
   const response = await userRequest(`Bearer ${getToken()}`).put(`/api/order/${id}`, status,
