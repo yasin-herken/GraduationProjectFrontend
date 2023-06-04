@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { publicRequest } from "../../Requests/RequestMethods";
+import {useNavigate} from "react-router-dom";
 const schema = yup
   .object({
     email: yup.string().email().required("Email is required"),
@@ -18,6 +19,7 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const navigate = useNavigate();
   const [error, setError] = useState({
     show: false,
     msg: "",
@@ -29,7 +31,7 @@ const Register = () => {
         username: object.username,
         password: object.password,
       });
-      console.log(res);
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }

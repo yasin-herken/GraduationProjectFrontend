@@ -57,13 +57,6 @@ const schema = yup
         code: yup.string().required("Gender is required"),
       })
       .required("Gender is required"),
-    size: yup
-      .object()
-      .shape({
-        name: yup.string().required("Product size is required"),
-        code: yup.string().required("Product size is required"),
-      })
-      .required("Product size is required"),
     category: yup
       .object()
       .shape({
@@ -99,7 +92,7 @@ const ProductCreate = () => {
       },
       images: formData.images.map((image) => image.url),
       color: formData.color.name,
-      size: formData.size.name,
+      size: formData?.size?.name,
       category: {
         name: formData.category.name,
       },
