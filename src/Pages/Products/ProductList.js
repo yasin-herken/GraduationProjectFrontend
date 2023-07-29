@@ -14,6 +14,8 @@ import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { deleteProduct as Delete } from "../../Services/userServices";
 import { Toolbar } from "primereact/toolbar";
+import {Dropdown} from "primereact/dropdown";
+import {SlideMenu} from "primereact/slidemenu";
 const ProductList = () => {
   const toast = useRef(null);
   const [products, setProducts] = useState([]);
@@ -51,7 +53,7 @@ const ProductList = () => {
     setDeleteProductDialog(true);
   };
   const actionBodyTemplate = (rowData) => {
-    const items = [
+/*    const items = [
       {
         icon: "pi-ellipsis-v",
         items: [
@@ -72,7 +74,20 @@ const ProductList = () => {
         ],
       },
     ];
-    return <Menubar model={items} className="bg-white text-white" />;
+    return <SlideMenu model={items} className={"p-slidemenu"}/>;*/
+    return <React.Fragment>
+        <Button
+          icon={"pi pi-fw pi-pencil"}
+          className="p-button-rounded p-button-outlined p-button-sm ml-2"
+          onClick={() =>  navigate(`/products/${rowData.id}`)}
+        />
+        <Button
+          icon="pi pi-fw pi-trash"
+          className="p-button-rounded p-button-danger p-button-outlined"
+          aria-label="Delete"
+          onClick={() => confirmDeleteProduct(rowData)}
+        />
+    </React.Fragment>
   };
   const confirmDeleteSelected = () => {
     setDeleteProductDialog(true);

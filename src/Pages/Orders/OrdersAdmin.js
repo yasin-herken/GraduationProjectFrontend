@@ -26,7 +26,6 @@ const OrdersAdmin = () => {
   };
 
   const formatCurrency = (value) => {
-    console.log(value)
     return <span>${value}</span>;
   };
 
@@ -35,6 +34,7 @@ const OrdersAdmin = () => {
   };
 
   const imageBodyTemplate = (rowData, a) => {
+    console.log(rowData)
     return <img src={`${rowData.productImage[0].url}`} alt={rowData.image} className="shadow-2 border-round"
                 style={{width: '64px'}}/>;
   };

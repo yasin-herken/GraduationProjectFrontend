@@ -100,7 +100,7 @@ const ProductCreate = () => {
     };
     if (updateOrAdd === "Update") {
       try {
-        const res = await putProduct(location.pathname.split("/")[2], data);
+        await putProduct(location.pathname.split("/")[2], data);
         toast("Product updated successfully");
         await new Promise((resolve) => setTimeout(resolve, 3000));
         navigate("/products");
@@ -109,7 +109,7 @@ const ProductCreate = () => {
       }
     } else {
       try {
-        const res = await postProduct(data);
+        await postProduct(data);
         toast("Product added successfully");
         await new Promise((resolve) => setTimeout(resolve, 3000));
         navigate("/products");

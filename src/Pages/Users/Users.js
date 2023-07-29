@@ -69,11 +69,6 @@ const Users = () => {
       <React.Fragment>
         <div className="flex flex-row-reverse">
           <Button
-            icon={"pi pi-pencil"}
-            className="p-button-rounded p-button-outlined p-button-sm ml-2"
-            onClick={() => editUser(rowData)}
-          />
-          <Button
             icon="pi pi-times"
             className="p-button-rounded p-button-danger p-button-outlined"
             aria-label="Delete"

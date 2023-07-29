@@ -21,7 +21,7 @@ const Sidebar = ({toggle}) => {
       >
         <div className="sidebar-content js-simplebar">
           <a className="sidebar-brand" href="/">
-            <span className="align-middle">E Ticaret Sitesi</span>
+            <span className="align-middle">Easy-SHOP</span>
           </a>
           <ul className="sidebar-nav">
             <li className="sidebar-header">Pages</li>
